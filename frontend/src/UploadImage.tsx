@@ -29,6 +29,10 @@ export default function UploadImage() {
       let something = await getDownloadURL(imgRef);
       // console.log(something);
       let data = {
+        year: 123123,
+        course: "cpsc",
+        section: "101L",
+        date: new Date(),
         imageId: imageId,
         imageUrl: something,
       };
