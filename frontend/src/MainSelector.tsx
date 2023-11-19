@@ -12,9 +12,9 @@ export default function MainSelector() {
 
       <div>
         <form>
-          <Grid container spacing={20}>
+          <Grid container spacing={20} paddingLeft={"10px"}>
             <Grid item>
-              <Select label="Year">
+              <Select label="Year" defaultValue="Choose">
                 <MenuItem value={2022}>2022</MenuItem>
                 <MenuItem value={2023}>2023</MenuItem>
               </Select>

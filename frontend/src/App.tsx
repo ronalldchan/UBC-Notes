@@ -4,6 +4,7 @@ import "./App.css";
 import MainSelector from "./MainSelector";
 import { Title } from "./TestHeader";
 import { Container } from "@mui/system";
+import Listing from "./Listing";
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
           <Title />
 
           <MainSelector />
+
+          <Listing />
       </Container>
     </div>
   );
