@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import TestHeader from "./TestHeader";
+import MainSelector from "./MainSelector";
 import { Container } from "@mui/system";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
   return (
     <div style={rootStyles}>
       <Container sx={{height: "100vh", display: "flex", justifyContent: "center", alignItems: "center"}}>
-          <TestHeader />
+          <MainSelector />
       </Container>
     </div>
   );
