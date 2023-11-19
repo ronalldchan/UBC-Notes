@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material";
 
-export default function TestHeader() {
+export function Title() {
   return (
-    <Box>
-      <Typography variant="h1">test asdjfasdjf;alksdj</Typography>
-    </Box>
+    <Typography variant="h1" sx = {{color:"white", textAlign:"center" , paddingBottom: "10px", fontFamily: "arial"}}>
+      UBCNotes
+    </Typography>
   );
 }
