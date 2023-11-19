@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useState } from "react";
 import { Button, Input } from "@mui/material";
 import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
-import { storage } from "./firebase";
+import { storage, firestore } from "./firebase";
+import { addDoc, collection } from "@firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
 export default function UploadImage() {
@@ -14,6 +15,8 @@ export default function UploadImage() {
     }
   };
 
+  const dbRef = collection(firestore, "images");
+
   const handleUpload = async () => {
     if (img) {
       const imageId = uuidv4();
@@ -22,9 +25,14 @@ export default function UploadImage() {
       // console.log("File name:", img.name);
       // console.log("File size:", img.size);
       // console.log("File type:", img.type);
-      // window.alert("File uploaded successfully");
+      window.alert("File uploaded successfully");
       let something = await getDownloadURL(imgRef);
-      console.log(something);
+      // console.log(something);
+      let data = {
+        imageId: imageId,
+        imageUrl: something,
+      };
+      addDoc(dbRef, data);
     } else {
       console.error("No file selected");
     }
