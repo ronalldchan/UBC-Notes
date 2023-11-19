@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography, Select, MenuItem, Grow} from "@mui/material";
+import { Box, Button, Grid, Typography, Select, InputLabel, MenuItem, Grow, FormControl} from "@mui/material";
 import { padding } from "@mui/system";
 import React, { useState } from "react";
 
@@ -20,26 +20,35 @@ export default function MainSelector() {
 
       <div>
         <form>
-          <Grid container spacing={20} paddingLeft={"10px"}>
+          <Grid container spacing={5} paddingLeft={"10px"}>
             <Grid item>
-              <Select label="Year" defaultValue="Choose">
-                <MenuItem value={2022}>2022</MenuItem>
-                <MenuItem value={2023}>2023</MenuItem>
-              </Select>
+              <FormControl>
+                <InputLabel id="yearLabel">Year</InputLabel>
+                <Select labelId="yearLabel" label="Year" sx={{ width: 150 }}>
+                  <MenuItem value={2022}>2022</MenuItem>
+                  <MenuItem value={2023}>2023</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
 
               <Grid item>
-                <Select label="Course">
-                  <MenuItem value={"CPSC210"}>CPSC210</MenuItem>
-                  <MenuItem value={"CPSC213"}>CPSC213</MenuItem>
-                </Select>
+                <FormControl>
+                  <InputLabel id="courseLabel">Course</InputLabel>
+                  <Select labelId="courseLabel" label="Course" sx={{ width: 400 }}>
+                    <MenuItem value={"CPSC210"}>CPSC210</MenuItem>
+                    <MenuItem value={"CPSC213"}>CPSC213</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
 
               <Grid item>
-                <Select label="Section">
-                  <MenuItem value={101}>101</MenuItem>
-                  <MenuItem value={102}>102</MenuItem>
-                </Select>
+                <FormControl>
+                  <InputLabel id="sectionLabel">Section</InputLabel>
+                  <Select labelId="sectionLabel" label="Section" sx={{ width: 150 }}>
+                    <MenuItem value={101}>101</MenuItem>
+                    <MenuItem value={102}>102</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
 
               <Grid item>

@@ -21,7 +21,6 @@ function App() {
 
           <MainSelector />
 
-          <Listing />
       </Container>
     </div>
   );
