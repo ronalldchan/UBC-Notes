@@ -132,13 +132,14 @@ export default function MainSelector() {
               </Grid>
 
               <Grid item>
-                <Button variant="contained" onClick={handleQuery}
+                <Button variant="contained"
                   sx={{
                     width: '150px', // Set the width
                     height: '55px', // Set the height
                     fontSize: '20px', // Set the font size
                   }}
                   onClick={() => {
+                    handleQuery()
                     setIsResultOpen(true);
                     setButtonClickCount(buttonClickCount + 1);
                     /*
