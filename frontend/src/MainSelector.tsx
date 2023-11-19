@@ -18,15 +18,15 @@ export default function MainSelector() {
           View and Submit Notes
         </Typography>
 
-        <div>
-          <form>
-            <Grid container spacing={20}>
-              <Grid item>
-                <Select label="Year">
-                  <MenuItem value={2022}>2022</MenuItem>
-                  <MenuItem value={2023}>2023</MenuItem>
-                </Select>
-              </Grid>
+      <div>
+        <form>
+          <Grid container spacing={20} paddingLeft={"10px"}>
+            <Grid item>
+              <Select label="Year" defaultValue="Choose">
+                <MenuItem value={2022}>2022</MenuItem>
+                <MenuItem value={2023}>2023</MenuItem>
+              </Select>
+            </Grid>
 
               <Grid item>
                 <Select label="Course">
