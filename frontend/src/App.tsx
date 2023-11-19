@@ -5,7 +5,6 @@ import MainSelector from "./MainSelector";
 import { Title } from "./TestHeader";
 import { Container } from "@mui/system";
 import Listing from "./Listing";
-import UploadImage from "./UploadImage";
 import FetchQuery from "./FetchQuery";
 
 function App() {
@@ -28,7 +27,6 @@ function App() {
         <Title />
 
         <MainSelector />
-        <UploadImage />
         <FetchQuery />
 
         <Listing />
