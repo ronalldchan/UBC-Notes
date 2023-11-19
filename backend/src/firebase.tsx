@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
+import { collection, doc, setDoc } from "@firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBQjAe6t5RMpUOGeVh_THr3cRgRZiYaDhc",
@@ -13,3 +14,38 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const firestore = getFirestore(app);
+
+class note {
+  courseName: string;
+  courseNumber: number;
+  section: number;
+  dateAdded: number;
+
+  constructor(coursename: string,coursenumber: number,section: number, dateAdded: number) {
+    this.courseName = coursename;
+    this.courseNumber = coursenumber;
+    this.section = section;
+    this.dateAdded = dateAdded;
+  } 
+
+}
+
+function sortbydateAdded(notes: note[]) {
+  const sortednotes = [...notes];
+
+  sortednotes.sort((a,b) => a.dateAdded - b.dateAdded);
+  return sortednotes;
+
+}
+
+
+
+// function sortbyyear() {
+//   const notes = collection(firestore,"backend/node_modules/@firebase/firestore");
+//   var array:Array<note> = 
+
+
+
+
+
+
