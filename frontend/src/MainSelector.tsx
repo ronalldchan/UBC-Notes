@@ -1,18 +1,42 @@
 import { Input, FormControl, Box, Button, Grid, Typography, Select, MenuItem } from "@mui/material";
 import { padding } from "@mui/system";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, useEffect} from "react";
 import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
-import { storage, firestore } from "./firebase";
-import { addDoc, collection } from "@firebase/firestore";
+import { storage, firestore,  } from "./firebase";
+import { addDoc, collection, getDocs, query, where } from "@firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
+import { Note } from "./Note";
 
 export default function MainSelector() {
   const [img, setImg] = useState<File | null>(null);
+  const [data, setData] = useState([]);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       setImg(file);
+    }
+  };
+
+  const handleQuery = async () => {
+    try {
+      const collectionRef = collection(firestore, "images"); // Replace 'your_collection_name' with your actual collection name
+
+      const q = query(collectionRef,
+        where("year", "==", year),
+        where("course", "==", course),
+        where("section", "==", section))
+
+      const querySnapshot = await getDocs(q);
+      // console.log(querySnapshot);
+      const doc2 = querySnapshot.docs.map((doc) => {
+        let data = doc.data();
+        
+        return new Note(data.year, data.course, data.section, data.section, data.date, data.imageUrl);
+      });
+      console.log(doc2);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -90,7 +114,7 @@ export default function MainSelector() {
             </Grid>
 
             <Grid item>
-              <Button variant="contained"
+              <Button variant="contained" onClick={handleQuery}
                 sx={{
                   width: '150px', // Set the width
                   height: '55px', // Set the height

@@ -5,7 +5,6 @@ import MainSelector from "./MainSelector";
 import { Title } from "./TestHeader";
 import { Container } from "@mui/system";
 import Listing from "./Listing";
-import FetchQuery from "./FetchQuery";
 
 function App() {
   const rootStyles = {
@@ -25,10 +24,7 @@ function App() {
         }}
       >
         <Title />
-
         <MainSelector />
-        <FetchQuery />
-
         <Listing />
       </Container>
     </div>
