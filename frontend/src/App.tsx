@@ -26,6 +26,7 @@ function App() {
         <Title />
         <MainSelector />
         <Listing />
+
       </Container>
     </div>
   );
