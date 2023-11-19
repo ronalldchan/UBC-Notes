@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import TestHeader from "./TestHeader";
+import { Container } from "@mui/system";
 
 function App() {
   const rootStyles = {
@@ -11,11 +12,11 @@ function App() {
 
 
   return (
-    <>
-      <div style={rootStyles}>
-        <TestHeader />
-      </div>
-    </>
+    <div style={rootStyles}>
+      <Container sx={{height: "100vh", display: "flex", justifyContent: "center", alignItems: "center"}}>
+          <TestHeader />
+      </Container>
+    </div>
   );
 }
 
