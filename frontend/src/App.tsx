@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import TestHeader from "./TestHeader";
+import {Title, TestHeader} from "./TestHeader";
 
 function App() {
   const rootStyles = {
@@ -13,6 +13,8 @@ function App() {
   return (
     <>
       <div style={rootStyles}>
+        <Title />
+
         <TestHeader />
       </div>
     </>
