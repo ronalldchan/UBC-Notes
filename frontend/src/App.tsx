@@ -14,9 +14,10 @@ function App() {
 
   return (
     <div style={rootStyles}>
-      <Title />
 
-      <Container sx={{height: "100vh", display: "flex", justifyContent: "center", alignItems: "center"}}>
+      <Container sx={{height: "100vh", display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center"}}>
+          <Title />
+
           <TestHeader />
       </Container>
     </div>
