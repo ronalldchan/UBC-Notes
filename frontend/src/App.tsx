@@ -4,7 +4,19 @@ import "./App.css";
 import TestHeader from "./TestHeader";
 
 function App() {
-  return <TestHeader />;
+  const rootStyles = {
+    backgroundColor: '#002145', // Change this to the desired background color
+    minHeight: '100vh', // Ensures the background covers the full viewport height
+  };
+
+
+  return (
+    <>
+      <div style={rootStyles}>
+        <TestHeader />
+      </div>
+    </>
+  );
 }
 
 export default App;
