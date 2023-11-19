@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useState } from "react";
 import { Button, Input } from "@mui/material";
-import { ref, uploadBytes } from "@firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 import { storage } from "./firebase";
+import { v4 as uuidv4 } from "uuid";
 
 export default function UploadImage() {
   const [img, setImg] = useState<File | null>(null);
@@ -13,14 +14,17 @@ export default function UploadImage() {
     }
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (img) {
-      const imgRef = ref(storage, "files/test");
-      uploadBytes(imgRef, img);
-      // Implement your upload logic here
-      console.log("File name:", img.name);
-      console.log("File size:", img.size);
-      console.log("File type:", img.type);
+      const imageId = uuidv4();
+      const imgRef = ref(storage, `files/${imageId}`);
+      await uploadBytes(imgRef, img);
+      // console.log("File name:", img.name);
+      // console.log("File size:", img.size);
+      // console.log("File type:", img.type);
+      // window.alert("File uploaded successfully");
+      let something = await getDownloadURL(imgRef);
+      console.log(something);
     } else {
       console.error("No file selected");
     }
