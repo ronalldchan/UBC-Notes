@@ -2,7 +2,9 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import MainSelector from "./MainSelector";
+import { Title } from "./TestHeader";
 import { Container } from "@mui/system";
+
 
 function App() {
   const rootStyles = {
@@ -13,7 +15,9 @@ function App() {
 
   return (
     <div style={rootStyles}>
-      <Container sx={{height: "100vh", display: "flex", justifyContent: "center", alignItems: "center"}}>
+      <Container sx={{height: "100vh", display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center"}}>
+          <Title />
+
           <MainSelector />
       </Container>
     </div>
