@@ -31,7 +31,6 @@ function App() {
         <UploadImage />
         <FetchQuery />
 
-        <Listing />
       </Container>
     </div>
   );
