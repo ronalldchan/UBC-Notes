@@ -5,14 +5,16 @@ export class Note {
   section: number;
   date: number;
   imageUrl: string;
+  title: string;
 
-  constructor(year: number, courseName: string, courseNumber: number, section: number, date: number, imageUrl: string) {
+  constructor(year: number, courseName: string, courseNumber: number, section: number, date: number, imageUrl: string, title:string) {
     this.year = year;
     this.courseName = courseName;
     this.courseNumber = courseNumber;
     this.section = section;
     this.date = date;
     this.imageUrl = imageUrl;
+    this.title = title;
   }
 }
 
