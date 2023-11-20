@@ -219,23 +219,25 @@ export default function MainSelector() {
           </div>
 
           {data && (
-            <Stack>
-              {data.map((item) => (
-                <Paper
-                  sx={{
-                    overflow: "hidden",
-                    maxWidth: 100,
-                    minWidth: 50,
-                    border: 2,
-                    // aspectRatio: "1/1",
-                  }}
-                >
-                  <a href={item.imageUrl} target="_blank">
-                    <img src={item.imageUrl} style={{ width: "100%", height: "auto" }} />
-                  </a>
-                </Paper>
-              ))}
-            </Stack>
+            <Box justifyContent={"center"} display={"flex"}>
+              <Stack spacing={5}>
+                {data.map((item) => (
+                  <Paper
+                    sx={{
+                      overflow: "hidden",
+                      maxWidth: 100,
+                      minWidth: 50,
+                      border: 2,
+                      // aspectRatio: "1/1",
+                    }}
+                  >
+                    <a href={item.imageUrl} target="_blank">
+                      <img src={item.imageUrl} style={{ width: "100%", height: "auto" }} />
+                    </a>
+                  </Paper>
+                ))}
+              </Stack>
+            </Box>
           )}
         </Box>
       </Grow>
