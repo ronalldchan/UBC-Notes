@@ -15,7 +15,7 @@ function App() {
     <div style={rootStyles}>
       <Container
         sx={{
-          height: "100vh",
+          // height: "100vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -24,7 +24,6 @@ function App() {
       >
         <Title />
         <MainSelector />
-
       </Container>
     </div>
   );
