@@ -11,7 +11,13 @@ import {
   Grow,
   Stack,
   Paper,
-  TextField
+  TextField, 
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
 } from "@mui/material";
 import { padding } from "@mui/system";
 import React, { ChangeEvent, useState, useEffect } from "react";
@@ -89,6 +95,8 @@ export default function MainSelector() {
       addDoc(dbRef, data);
       console.log(data);
     } else {
+      window.alert("File upload failed");
+
       console.error("No file selected");
     }
   };
@@ -229,38 +237,45 @@ export default function MainSelector() {
           </div>
 
           {data && (
-            <Box justifyContent={"center"} display={"flex"}>
+            <Box justifyContent={"center"} sx = {{ paddingTop : 5, paddingLeft : 15, paddingRight : 15}}>
               <Stack spacing={5}>
-                {data.map((item) => (
-
-                      <Grid container spacing={5} wrap='nowrap'>
-                        <Grid item xs={20}>
-                          <Typography>{item.title}</Typography>
-                        </Grid>
-
-                        <Grid item>
+              {data && (
+              <TableContainer component={Paper}>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell style={{ width: '70%' }}>Title</TableCell>
+                      <TableCell>Image</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {data.map((item, index) => (
+                      <TableRow key={index}>
+                        <TableCell>{item.title}</TableCell>
+                        <TableCell>
                           <Paper
                             sx={{
-                              overflow: "hidden",
+                              overflow: 'hidden',
                               maxWidth: 100,
                               minWidth: 50,
                               border: 2,
-                              // aspectRatio: "1/1",
                             }}
                           >
-                            <a href={item.imageUrl} target="_blank">
-                              <img src={item.imageUrl} style={{ width: "100%", height: "auto" }} />
+                            <a href={item.imageUrl} target="_blank" rel="noopener noreferrer">
+                              <img
+                                src={item.imageUrl}
+                                style={{ width: '100%', height: 'auto' }}
+                                alt={`Image for ${item.title}`}
+                              />
                             </a>
-                            
-                            
                           </Paper>
-                        </Grid>
-
-                      </Grid>
-                    
-                  
-
-                ))}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            )}
               </Stack>
             </Box>
           )}
