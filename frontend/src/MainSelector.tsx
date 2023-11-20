@@ -10,6 +10,7 @@ import {
   InputLabel,
   Grow,
   Stack,
+  Paper,
 } from "@mui/material";
 import { padding } from "@mui/system";
 import React, { ChangeEvent, useState, useEffect } from "react";
@@ -195,9 +196,10 @@ export default function MainSelector() {
 
       <Grow in={isResultOpen} timeout={{ enter: 500, exit: 300 }} key={buttonClickCount}>
         <Box
+          aria-label="testitem2"
           sx={{
             width: "1000px",
-            height: "150px",
+            // height: "150px",
             display: "flex",
             flexDirection: "column",
             borderRadius: 2,
@@ -207,17 +209,7 @@ export default function MainSelector() {
             marginTop: "20px",
           }}
         >
-          {data && (
-            <Stack>
-              {data.map((item) => (
-                <Box width={20}>
-                  <img src={item.imageUrl} />
-                </Box>
-              ))}
-            </Stack>
-          )}
-
-          <Typography>Text here.</Typography>
+          <Typography>Upload a new note</Typography>
 
           <div>
             <Input type="file" onChange={handleFileChange} />
@@ -225,6 +217,26 @@ export default function MainSelector() {
               Upload
             </Button>
           </div>
+
+          {data && (
+            <Stack>
+              {data.map((item) => (
+                <Paper
+                  sx={{
+                    overflow: "hidden",
+                    maxWidth: 100,
+                    minWidth: 50,
+                    border: 2,
+                    // aspectRatio: "1/1",
+                  }}
+                >
+                  <a href={item.imageUrl} target="_blank">
+                    <img src={item.imageUrl} style={{ width: "100%", height: "auto" }} />
+                  </a>
+                </Paper>
+              ))}
+            </Stack>
+          )}
         </Box>
       </Grow>
     </div>
