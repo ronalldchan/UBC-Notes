@@ -232,20 +232,34 @@ export default function MainSelector() {
             <Box justifyContent={"center"} display={"flex"}>
               <Stack spacing={5}>
                 {data.map((item) => (
-                  <Paper
-                    sx={{
-                      overflow: "hidden",
-                      maxWidth: 100,
-                      minWidth: 50,
-                      border: 2,
-                      // aspectRatio: "1/1",
-                    }}
-                  >
-                    <a href={item.imageUrl} target="_blank">
-                      <img src={item.imageUrl} style={{ width: "100%", height: "auto" }} />
-                    </a>
-                    <Typography>{item.title}</Typography>
-                  </Paper>
+
+                      <Grid container spacing={5} wrap='nowrap'>
+                        <Grid item xs={20}>
+                          <Typography>{item.title}</Typography>
+                        </Grid>
+
+                        <Grid item>
+                          <Paper
+                            sx={{
+                              overflow: "hidden",
+                              maxWidth: 100,
+                              minWidth: 50,
+                              border: 2,
+                              // aspectRatio: "1/1",
+                            }}
+                          >
+                            <a href={item.imageUrl} target="_blank">
+                              <img src={item.imageUrl} style={{ width: "100%", height: "auto" }} />
+                            </a>
+                            
+                            
+                          </Paper>
+                        </Grid>
+
+                      </Grid>
+                    
+                  
+
                 ))}
               </Stack>
             </Box>
