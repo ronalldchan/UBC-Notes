@@ -11,6 +11,7 @@ import {
   Grow,
   Stack,
   Paper,
+  TextField
 } from "@mui/material";
 import { padding } from "@mui/system";
 import React, { ChangeEvent, useState, useEffect } from "react";
@@ -20,6 +21,7 @@ import { addDoc, collection, getDocs, query, where } from "@firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 import { Note } from "./Note";
 import { RenderNotes } from "./RenderNotes";
+
 
 export default function MainSelector() {
   const [img, setImg] = useState<File | null>(null);
@@ -48,7 +50,7 @@ export default function MainSelector() {
       const doc2 = querySnapshot.docs.map((doc) => {
         let data = doc.data();
 
-        return new Note(data.year, data.course, data.section, data.section, data.date, data.imageUrl);
+        return new Note(data.year, data.course, data.section, data.section, data.date, data.imageUrl, data.title);
       });
       setData(doc2);
       console.log(doc2);
@@ -60,11 +62,12 @@ export default function MainSelector() {
   const [year, setYear] = React.useState("");
   const [course, setCourse] = React.useState("");
   const [section, setSection] = React.useState("");
+  const [title, setTitle] = React.useState("");
 
   const dbRef = collection(firestore, "images");
 
   const handleUpload = async () => {
-    if (img) {
+    if (img && title) {
       const imageId = uuidv4();
       const imgRef = ref(storage, `files/${imageId}`);
       await uploadBytes(imgRef, img);
@@ -81,8 +84,10 @@ export default function MainSelector() {
         date: new Date(),
         imageId: imageId,
         imageUrl: something,
+        title: title
       };
       addDoc(dbRef, data);
+      console.log(data);
     } else {
       console.error("No file selected");
     }
@@ -98,6 +103,10 @@ export default function MainSelector() {
 
   const handleSelectSection = (event: { target: { value: React.SetStateAction<string> } }) => {
     setSection(event.target.value);
+  };
+
+  const handleSelectTitle = (event: { target: { value: React.SetStateAction<string> } }) => {
+    setTitle(event.target.value);
   };
 
   const [isResultOpen, setIsResultOpen] = useState(false);
@@ -216,6 +225,7 @@ export default function MainSelector() {
             <Button variant="contained" color="primary" onClick={handleUpload}>
               Upload
             </Button>
+            <TextField id="title" label="Title" variant="outlined" value={title} onChange={handleSelectTitle}/>
           </div>
 
           {data && (
@@ -234,6 +244,7 @@ export default function MainSelector() {
                     <a href={item.imageUrl} target="_blank">
                       <img src={item.imageUrl} style={{ width: "100%", height: "auto" }} />
                     </a>
+                    <Typography>{item.title}</Typography>
                   </Paper>
                 ))}
               </Stack>
